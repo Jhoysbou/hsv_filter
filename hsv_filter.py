@@ -20,16 +20,18 @@ cv2.createTrackbar('s2', 'settings', 255, 255, nothing)
 cv2.createTrackbar('v2', 'settings', 255, 255, nothing)
 crange = [0, 0, 0, 0, 0, 0]
 
-vs = cv2.VideoCapture("./camera/WIN_20200321_13_34_37_Pro.mp4")
+vs = cv2.VideoCapture("/Users/jhoysbou/Documents/git_repositories/d_pendulum/video/1.mov")
 now = time.time()
 
-while abs(now - time.time()) <= 1:
+# while abs(now - time.time()) <= 1:
+#     img = vs.read()[1]
+
+for i in range(100):
     img = vs.read()[1]
 
-img = vs.read()[1]
 while True:
     frame = imutils.resize(img, width=640, height=360)
-    hsv = cv2.cvtColor(frame, cv2.COLOR_BGR2HSV)
+    hsv = cv2.cvtColor(frame, cv2.COLOR_RGB2HSV)
 
     # считываем значения бегунков
     h1 = cv2.getTrackbarPos('h1', 'settings')
